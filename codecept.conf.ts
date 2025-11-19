@@ -6,6 +6,9 @@ setHeadlessWhen(process.env.HEADLESS);
 // enable all common plugins https://github.com/codeceptjs/configure#setcommonplugins
 setCommonPlugins();
 
+const isCI = process.env.CI === 'true';
+
+
 export const config: CodeceptJS.MainConfig = {
   tests: './*_test.ts',
   output: './output',
@@ -13,7 +16,7 @@ export const config: CodeceptJS.MainConfig = {
     Playwright: {
       browser: 'chromium',
       url: 'https://www.saucedemo.com',
-      show: true
+      show: !isCI
     }
   },
   include: {
