@@ -1,0 +1,44 @@
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# CodeceptJS output (screenshots, logs, videos)
+output/
+allure-results/
+allure-report/
+
+# Playwright specific
+test-results/
+playwright-report/
+playwright-video/
+playwright-traces/
+playwright/.cache/
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Coverage (if using nyc or jest)
+coverage/
+nyc_output/
+
+# Logs
+*.log
+
+# Temp files
+tmp/
+temp/
