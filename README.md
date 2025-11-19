@@ -14,6 +14,7 @@ This project is built to be **simple for beginners**, scalable for teams, and ea
 
 ## Project Structure
 
+```bash
 project-root/
 │
 ├── features/ # Gherkin feature files
@@ -30,7 +31,7 @@ project-root/
 ├── package.json
 ├── package-lock.json
 └── README.md
-
+```
 ---
 
 
