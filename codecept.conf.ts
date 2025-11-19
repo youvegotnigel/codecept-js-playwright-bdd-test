@@ -24,7 +24,38 @@ export const config: CodeceptJS.MainConfig = {
   },
   plugins: {
     htmlReporter: {
-      enabled: true
+      enabled: true,
+      output: './output',              // Directory for the report
+      reportFileName: 'report.html',   // Name of the HTML file
+      includeArtifacts: true,          // Include screenshots/artifacts
+      showSteps: true,                 // Show individual test steps
+      showSkipped: true                // Show skipped tests
+    }
+  },
+
+  "mocha": {
+    "reporterOptions": {
+      "codeceptjs-cli-reporter": {
+        "stdout": "-",
+        "options": {
+          "verbose": true,
+          "steps": true,
+        }
+      },
+      "mochawesome": {
+        "stdout": "./output/console.log",
+        "options": {
+          "reportDir": "./output",
+          "reportFilename": "report"
+        }
+      },
+      "mocha-junit-reporter": {
+        "stdout": "./output/console.log",
+        "options": {
+          "mochaFile": "./output/result.xml",
+          "attachments": true                   //add screenshot for a failed test
+        }
+      }
     }
   },
   name: 'codecept-js-playwright-bdd-test'
