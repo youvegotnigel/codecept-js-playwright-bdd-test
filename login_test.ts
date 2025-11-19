@@ -1,6 +1,6 @@
 Feature('login');
 
-Scenario('test something',  ({ I }) => {
+Scenario('login to sauce demo site',  ({ I }) => {
 
     I.amOnPage('/');
     I.fillField('[data-test=username]', 'standard_user');
