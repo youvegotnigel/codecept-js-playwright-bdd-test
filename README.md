@@ -56,8 +56,17 @@ npx playwright install
 ### 3. Run tests
 
 ```bash
+npx codeceptjs run
+
+or
 npx codeceptjs run --steps
 
 or
+npx codeceptjs run --steps --verbose
+
+or
 npx codeceptjs run --steps --grep "@login"
+
+or
+npx codeceptjs run --reporter mocha-multi
 ```
