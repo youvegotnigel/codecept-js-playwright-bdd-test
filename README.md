@@ -15,22 +15,24 @@ This project is built to be **simple for beginners**, scalable for teams, and ea
 ## Project Structure
 
 ```bash
-project-root/
+codecept-js-playwright-bdd-test/
 │
-├── features/ # Gherkin feature files
-│ └── login.feature
+├── features/                   # <---- TODO
+│     └── login.feature
 │
-├── step_definitions/ # Step definitions mapped to Gherkin steps
-│ └── steps.ts
+├── step_definitions/           # <---- TODO
+│     └── login.steps.ts
 │
-├── pages/ # Page Object files (optional but recommended)
-│ └── LoginPage.ts
+├── pages/                      # <---- TODO
+│     └── LoginPage.ts
 │
-├── codecept.conf.js # Main CodeceptJS configuration
-├── playwright.config.js # Optional Playwright config (if needed)
+├── codecept.conf.ts
+├── steps.d.ts
+├── steps_file.ts
+├── tsconfig.json
 ├── package.json
-├── package-lock.json
-└── README.md
+└── .github/workflows/ci.yml
+
 ```
 ---
 
