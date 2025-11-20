@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "codeceptjs run --steps",
+    "test:allBrowsers": "codeceptjs run-multiple allBrowsers --steps",
     "test:verbose": "codeceptjs run --steps --verbose",
     "test:login": "codeceptjs run --steps --grep '@login'",
     "test:multi": "codeceptjs run --reporter mocha-multi"

@@ -1,6 +1,9 @@
 import { setHeadlessWhen, setWindowSize, setCommonPlugins } from '@codeceptjs/configure';
+import { devices } from 'playwright-core';
+
 // turn on headless mode when running with HEADLESS=true environment variable
 // export HEADLESS=true && npx codeceptjs run
+
 setHeadlessWhen(process.env.HEADLESS);
 setWindowSize(1536, 722);
 
@@ -13,12 +16,24 @@ export const config: CodeceptJS.MainConfig = {
   helpers: {
     Playwright: {
       browser: 'chromium',
+      //emulate: devices["iPhone 12"],
+
+      customLocatorStrategies: {
+        byTestId: (selector, root) => {
+          return root.querySelector(`[data-test="${selector}"]`);
+        }
+      },
       url: 'https://www.saucedemo.com',
       show: true
     }
   },
+  multiple: {
+    allBrowsers: {
+      browsers: ['chromium', 'firefox', 'webkit']
+    }
+  },
   include: {
-    I: './steps_file'
+    I: './steps_file.ts'
   },
   plugins: {
 
