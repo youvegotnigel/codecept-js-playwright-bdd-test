@@ -6,9 +6,6 @@ setHeadlessWhen(process.env.HEADLESS);
 // enable all common plugins https://github.com/codeceptjs/configure#setcommonplugins
 setCommonPlugins();
 
-const isCI = process.env.CI === 'true';
-
-
 export const config: CodeceptJS.MainConfig = {
   tests: 'tests/*_test.ts',
   output: './output',
