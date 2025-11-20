@@ -2,7 +2,7 @@ import { setHeadlessWhen, setWindowSize, setCommonPlugins } from '@codeceptjs/co
 // turn on headless mode when running with HEADLESS=true environment variable
 // export HEADLESS=true && npx codeceptjs run
 setHeadlessWhen(process.env.HEADLESS);
-setWindowSize(1440, 900);
+setWindowSize(1536, 722);
 
 // enable all common plugins https://github.com/codeceptjs/configure#setcommonplugins
 setCommonPlugins();
