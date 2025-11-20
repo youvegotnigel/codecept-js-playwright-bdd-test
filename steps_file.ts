@@ -9,10 +9,11 @@ export = function() {
     // It is recommended to place a general 'login' function here.
 
     login(username: string, password: string) {
-      I.fillField('[data-test="username"]', username);
-      I.fillField('[data-test="password"]', password);
-      I.click('[data-test="login-button"]');
-      
+
+      I.fillField({ byTestId: 'username' }, username);
+      I.fillField({ byTestId: 'password' }, password);
+      I.click({ byTestId: 'login-button' });
+
       I.see('Products'); 
     }
 
