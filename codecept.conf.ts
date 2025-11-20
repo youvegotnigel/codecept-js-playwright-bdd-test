@@ -10,7 +10,7 @@ const isCI = process.env.CI === 'true';
 
 
 export const config: CodeceptJS.MainConfig = {
-  tests: './*_test.ts',
+  tests: 'tests/*_test.ts',
   output: './output',
   helpers: {
     Playwright: {
@@ -23,6 +23,12 @@ export const config: CodeceptJS.MainConfig = {
     I: './steps_file'
   },
   plugins: {
+
+    allure: {
+      enabled: true,
+      require: "allure-codeceptjs",
+    },
+
     htmlReporter: {
       enabled: true,
       output: './output',              // Directory for the report
