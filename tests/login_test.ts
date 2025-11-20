@@ -3,10 +3,14 @@ Feature('login');
 Scenario('verify login with valid credentials',  ({ I }) => {
 
     I.amOnPage('/');
+    I.see('Accepted usernames are:');
+
     I.fillField('[data-test="username"]', 'standard_user');
     I.fillField('[data-test="password"]', 'secret_sauce');
     I.click('[data-test="login-button"]');
+
     I.see('Products'); 
+    I.dontSee('Accepted usernames are:');
 
 });
 
