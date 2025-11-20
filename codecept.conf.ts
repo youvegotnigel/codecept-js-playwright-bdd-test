@@ -1,28 +1,32 @@
-import { setHeadlessWhen, setCommonPlugins } from '@codeceptjs/configure';
+import { setHeadlessWhen, setWindowSize, setCommonPlugins } from '@codeceptjs/configure';
 // turn on headless mode when running with HEADLESS=true environment variable
 // export HEADLESS=true && npx codeceptjs run
 setHeadlessWhen(process.env.HEADLESS);
+setWindowSize(1536, 722);
 
 // enable all common plugins https://github.com/codeceptjs/configure#setcommonplugins
 setCommonPlugins();
 
-const isCI = process.env.CI === 'true';
-
-
 export const config: CodeceptJS.MainConfig = {
-  tests: './*_test.ts',
+  tests: 'tests/*_test.ts',
   output: './output',
   helpers: {
     Playwright: {
       browser: 'chromium',
       url: 'https://www.saucedemo.com',
-      show: !isCI
+      show: true
     }
   },
   include: {
     I: './steps_file'
   },
   plugins: {
+
+    allure: {
+      enabled: true,
+      require: "allure-codeceptjs",
+    },
+
     htmlReporter: {
       enabled: true,
       output: './output',              // Directory for the report
