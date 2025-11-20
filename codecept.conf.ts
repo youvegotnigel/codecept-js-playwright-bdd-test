@@ -20,7 +20,7 @@ export const config: CodeceptJS.MainConfig = {
 
       customLocatorStrategies: {
         byTestId: (selector, root) => {
-          return root.querySelector(`[data-testid="${selector}"]`);
+          return root.querySelector(`[data-test="${selector}"]`);
         }
       },
       url: 'https://www.saucedemo.com',
@@ -33,7 +33,7 @@ export const config: CodeceptJS.MainConfig = {
     }
   },
   include: {
-    I: './steps_file'
+    I: './steps_file.ts'
   },
   plugins: {
 
