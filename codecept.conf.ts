@@ -5,7 +5,7 @@ import { devices } from 'playwright-core';
 // export HEADLESS=true && npx codeceptjs run
 
 setHeadlessWhen(process.env.HEADLESS);
-//setWindowSize(1536, 722);
+setWindowSize(1536, 722);
 
 // enable all common plugins https://github.com/codeceptjs/configure#setcommonplugins
 setCommonPlugins();
@@ -15,8 +15,8 @@ export const config: CodeceptJS.MainConfig = {
   output: './output',
   helpers: {
     Playwright: {
-      //browser: 'chromium',
-      emulate: devices["iPhone 12"],
+      browser: 'chromium',
+      //emulate: devices["iPhone 12"],
 
       customLocatorStrategies: {
         byTestId: (selector, root) => {
