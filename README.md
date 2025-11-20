@@ -63,7 +63,7 @@ npx playwright install
 ```
 
 
-### 3. Run tests
+### 3. Run Tests
 
 ```bash
 npx codeceptjs run
@@ -79,4 +79,7 @@ npx codeceptjs run --steps --grep "@login"
 
 or
 npx codeceptjs run --reporter mocha-multi
+
+or
+npx codeceptjs run --grep "custom locator strategy"
 ```
