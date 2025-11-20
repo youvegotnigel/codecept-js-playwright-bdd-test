@@ -40,16 +40,3 @@ Scenario('verify login with empty password',  ({ I }) => {
     I.see('Epic sadface: Password is required'); 
 
 });
-
-
-// Test with locator strategy in steps.d.ts and codecept.conf.ts
-
-// Scenario('verify login as locked out user',  ({ I }) => {
-
-//     I.amOnPage('/');
-//     I.fillField({ byTestId: 'username' }, 'locked_out_user');
-//     I.fillField({ byTestId: 'password' }, 'secret_sauce');
-//     I.click({ byTestId: 'login-button' });
-//     I.see('Epic sadface: Sorry, this user has been locked out.'); 
-
-// });
