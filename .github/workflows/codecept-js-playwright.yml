@@ -27,5 +27,5 @@ jobs:
 
     - name: Run CodeceptJS Tests
       env:
-        CI: true
+        HEADLESS: true
       run: npx codeceptjs run --steps

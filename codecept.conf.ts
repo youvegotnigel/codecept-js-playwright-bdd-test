@@ -16,7 +16,7 @@ export const config: CodeceptJS.MainConfig = {
     Playwright: {
       browser: 'chromium',
       url: 'https://www.saucedemo.com',
-      show: !isCI
+      show: true
     }
   },
   include: {
