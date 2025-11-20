@@ -12,6 +12,16 @@ This project is built to be **simple for beginners**, scalable for teams, and ea
 
 ---
 
+## Prerequisites
+
+* Node.js 16+ (recommended: 18 or 20 LTS)
+* VS Code (IDE)
+* Run Playwright browser install once:
+```bash
+npx playwright install
+```
+
+
 ## Project Structure
 
 ```bash
