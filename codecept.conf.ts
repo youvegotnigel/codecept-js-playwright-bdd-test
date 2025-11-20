@@ -17,6 +17,12 @@ export const config: CodeceptJS.MainConfig = {
     Playwright: {
       //browser: 'chromium',
       emulate: devices["iPhone 12"],
+
+      customLocatorStrategies: {
+        byTestId: (selector, root) => {
+          return root.querySelector(`[data-testid="${selector}"]`);
+        }
+      },
       url: 'https://www.saucedemo.com',
       show: true
     }

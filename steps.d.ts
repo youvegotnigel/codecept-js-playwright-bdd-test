@@ -8,4 +8,7 @@ declare namespace CodeceptJS {
   namespace Translation {
     interface Actions {}
   }
+  interface CustomLocators {
+    byTestId: { byTestId: string };
+  }
 }
