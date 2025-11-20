@@ -12,7 +12,7 @@ Scenario('verify login with valid credentials',  ({ I }) => {
 
 
 Scenario('verify login as locked out user',  ({ I }) => {
-``
+    
     I.amOnPage('/');
     I.fillField({ byTestId: 'username' }, 'locked_out_user');
     I.fillField({ byTestId: 'password' }, 'secret_sauce');
