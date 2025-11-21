@@ -37,6 +37,11 @@ export const config: CodeceptJS.MainConfig = {
   },
   plugins: {
 
+    customListener: {
+      enabled: true,
+      require: "./listeners/customListener.ts"
+    },
+
     allure: {
       enabled: true,
       require: "allure-codeceptjs",
