@@ -6,6 +6,11 @@ on:
   pull_request:
     branches: [ main, master ]
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+  
 jobs:
   test:
     timeout-minutes: 60
@@ -29,3 +34,39 @@ jobs:
       env:
         HEADLESS: true
       run: npx codeceptjs run --steps
+
+
+    # ------------------------------------
+    # GitHub Pages deployment steps below
+    # ------------------------------------
+
+
+    # Ensure output folder exists and has the report
+    - name: Check output folder
+      run: |
+          echo "Listing ./output for debugging"
+          ls -la ./output || true
+
+    # Copy output/report.html, into index.html
+    # So GitHub Pages will serve it from the site root.
+    - name: Make report accessible at root (index.html)
+      if: ${{ always() }}
+      run: |
+          if [ -f ./output/report.html ]; then
+            cp ./output/report.html ./output/index.html
+            echo "Copied report.html -> index.html"
+          else
+            echo "No ./output/report.html found; skipping copy."
+          fi
+
+    - name: Setup Pages
+      uses: actions/configure-pages@v5
+
+    - name: Upload pages artifact (only the generated output folder)
+      uses: actions/upload-pages-artifact@v3
+      with:
+          path: './output'
+
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4  
