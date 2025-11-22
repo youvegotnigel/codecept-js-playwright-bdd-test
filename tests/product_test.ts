@@ -173,6 +173,8 @@ Scenario('verify app reset',  ({ I }) => {
 
     I.click('#react-burger-menu-btn');              // open menu
     I.click({ byTestId: 'reset-sidebar-link' });    // click reset app state
+    I.wait(1);                                       // wait for reset to complete
+    I.click('#react-burger-cross-btn');              // close menu
 
     I.dontSeeElement({ byTestId: 'shopping-cart-badge' });
 
