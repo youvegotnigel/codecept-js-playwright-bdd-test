@@ -15,6 +15,7 @@ export const config: CodeceptJS.MainConfig = {
   output: './output',
   helpers: {
     Playwright: {
+      timeout: 30 * 1000,  // limit all tests in all suites to 30 secs
       browser: 'chromium',
       //emulate: devices["iPhone 12"],
 

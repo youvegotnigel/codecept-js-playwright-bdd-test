@@ -157,7 +157,7 @@ Scenario('verify sauce labs backpack with problem user', async ({ I }) => {
 });
 
 
-Scenario('verify app reset',  ({ I }) => {
+Scenario('verify app reset', { timeout: 10 }, ({ I }) => {
 
     I.amOnPage('/');
     I.login("standard_user", "secret_sauce");
