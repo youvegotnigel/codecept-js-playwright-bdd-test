@@ -88,6 +88,4 @@ npx codeceptjs run --grep "custom locator strategy"
 
 ## Latest Test Report
 
-The latest automated test report is available here:
-
-[**Open Test Report**](https://youvegotnigel.github.io/codecept-js-playwright-bdd-test/)
+<a href="https://youvegotnigel.github.io/codecept-js-playwright-bdd-test/" target="_blank"><b>Open Latest Test Report</b></a>
