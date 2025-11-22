@@ -84,6 +84,7 @@ or
 npx codeceptjs run --grep "custom locator strategy"
 ```
 
+---
 
 ## Latest Test Report
 
