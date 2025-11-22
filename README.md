@@ -83,3 +83,10 @@ npx codeceptjs run --reporter mocha-multi
 or
 npx codeceptjs run --grep "custom locator strategy"
 ```
+
+
+## Latest Test Report
+
+The latest automated test report is available here:
+
+👉 **https://youvegotnigel.github.io/codecept-js-playwright-bdd-test/**
