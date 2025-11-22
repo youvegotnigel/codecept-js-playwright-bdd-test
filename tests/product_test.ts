@@ -84,7 +84,7 @@ Scenario('verify name sorting (A to Z)', async ({ I }) => {
     I.selectOption({ byTestId: 'product-sort-container' }, 'Name (A to Z)');
 
     //const inventoryItemNames: string[] = await I.grabTextFromAll({ byTestId: 'inventory-item-name' });
-    const inventoryItemNames: string[] = await I.grabTextFromAll('.inventory_item_name ');
+    const inventoryItemNames: string[] = await I.grabTextFromAll('.inventory_item_name');
 
     const sortedInventoryItemNames = [...inventoryItemNames].sort((a, b) => a.localeCompare(b));
 
@@ -108,7 +108,7 @@ Scenario('verify name sorting (Z to A)', async ({ I }) => {
     I.selectOption({ byTestId: 'product-sort-container' }, 'Name (Z to A)');
 
     //const inventoryItemNames: string[] = await I.grabTextFromAll({ byTestId: 'inventory-item-name' });
-    const inventoryItemNames: string[] = await I.grabTextFromAll('.inventory_item_name ');
+    const inventoryItemNames: string[] = await I.grabTextFromAll('.inventory_item_name');
 
     //create a DESCENDING sorted copy to compare against (Z -> A)
     const sortedInventoryItemNames = [...inventoryItemNames].sort((a, b) => b.localeCompare(a));
