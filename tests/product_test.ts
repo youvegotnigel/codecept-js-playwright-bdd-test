@@ -155,3 +155,31 @@ Scenario('verify sauce labs backpack with problem user', async ({ I }) => {
     );
 
 });
+
+
+Scenario('verify app reset',  ({ I }) => {
+
+    I.amOnPage('/');
+    I.login("standard_user", "secret_sauce");
+
+    I.click({ byTestId: 'add-to-cart-sauce-labs-backpack' });
+    I.click({ byTestId: 'add-to-cart-sauce-labs-bike-light' });
+    I.click({ byTestId: 'add-to-cart-sauce-labs-fleece-jacket' });
+
+    I.see('3', { byTestId: 'shopping-cart-badge' });
+
+    I.click('#react-burger-menu-btn');              // open menu
+    I.click({ byTestId: 'reset-sidebar-link' });    // click reset app state
+
+    I.dontSeeElement({ byTestId: 'shopping-cart-badge' });
+
+    I.dontSeeElement({ byTestId: 'remove-sauce-labs-backpack' });
+    I.seeElement({ byTestId: 'add-to-cart-sauce-labs-backpack' });
+
+    I.dontSeeElement({ byTestId: 'remove-sauce-labs-bike-light' });
+    I.seeElement({ byTestId: 'add-to-cart-sauce-labs-bike-light' });
+
+    I.dontSeeElement({ byTestId: 'remove-sauce-labs-fleece-jacket' });
+    I.seeElement({ byTestId: 'add-to-cart-sauce-labs-fleece-jacket' });
+
+});
