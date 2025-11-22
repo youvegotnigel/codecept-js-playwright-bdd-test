@@ -34,7 +34,7 @@ jobs:
         continue-on-error: true
         env:
           HEADLESS: true
-        run: npx codeceptjs run --steps
+        run: npm run test:allBrowsers
 
       # -------------------------------
       # GitHub Pages Deployment (always)
