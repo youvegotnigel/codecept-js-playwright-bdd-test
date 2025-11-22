@@ -129,8 +129,6 @@ Scenario('verify sauce labs backpack', async ({ I }) => {
 
     I.amOnPage('/');
     I.login("standard_user", "secret_sauce");
-    
-    //I.click({ byTestId: 'inventory-item-sauce-labs-backpack-img' });
 
     const image_source = await I.grabAttributeFrom({ byTestId: 'inventory-item-sauce-labs-backpack-img' }, 'src');
 
@@ -147,8 +145,6 @@ Scenario('verify sauce labs backpack with problem user', async ({ I }) => {
 
     I.amOnPage('/');
     I.login("problem_user", "secret_sauce");
-    
-    //I.click({ byTestId: 'inventory-item-sauce-labs-backpack-img' });
 
     const image_source = await I.grabAttributeFrom({ byTestId: 'inventory-item-sauce-labs-backpack-img' }, 'src');
 
