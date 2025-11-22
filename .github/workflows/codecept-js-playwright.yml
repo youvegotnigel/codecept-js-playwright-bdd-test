@@ -6,6 +6,11 @@ on:
   pull_request:
     branches: [ main, master ]
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+  
 jobs:
   test:
     timeout-minutes: 60
@@ -42,8 +47,8 @@ jobs:
           echo "Listing ./output for debugging"
           ls -la ./output || true
 
-      # If your report filename is output/report.html, copy it to index.html
-      # so GitHub Pages will serve it from the site root.
+    # Copy output/report.html, into index.html
+    # So GitHub Pages will serve it from the site root.
     - name: Make report accessible at root (index.html)
       if: ${{ always() }}
       run: |
