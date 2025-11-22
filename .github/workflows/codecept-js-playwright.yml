@@ -34,7 +34,7 @@ jobs:
         continue-on-error: true
         env:
           HEADLESS: true
-        run: npm run test:allBrowsers
+        run: npm run test
 
       # -------------------------------
       # GitHub Pages Deployment (always)
