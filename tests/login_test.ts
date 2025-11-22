@@ -46,7 +46,7 @@ Scenario('verify login with empty password',  ({ I }) => {
 });
 
 
-Scenario.only('verify logout',  ({ I }) => {
+Scenario('verify logout',  ({ I }) => {
 
     I.amOnPage('/');
 
