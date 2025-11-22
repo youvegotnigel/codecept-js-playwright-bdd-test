@@ -18,10 +18,10 @@ Scenario('verify adding items to cart',  ({ I }) => {
 
 Scenario('verify price sorting low to high', async ({ I }) => {
 
-    await I.amOnPage('/');
-    await I.login("standard_user", "secret_sauce");
+    I.amOnPage('/');
+    I.login("standard_user", "secret_sauce");
 
-    await I.selectOption({ byTestId: 'product-sort-container' }, 'Price (low to high)');
+    I.selectOption({ byTestId: 'product-sort-container' }, 'Price (low to high)');
 
     //const uiPricesText: string[] = await I.grabTextFromAll({ byTestId: 'inventory-item-price' });
     const uiPricesText: string[] = await I.grabTextFromAll('.inventory_item_price');
@@ -44,10 +44,10 @@ Scenario('verify price sorting low to high', async ({ I }) => {
 
 Scenario('verify price sorting high to low', async ({ I }) => {
 
-    await I.amOnPage('/');
-    await I.login("standard_user", "secret_sauce");
+    I.amOnPage('/');
+    I.login("standard_user", "secret_sauce");
 
-    await I.selectOption({ byTestId: 'product-sort-container' }, 'Price (high to low)');
+    I.selectOption({ byTestId: 'product-sort-container' }, 'Price (high to low)');
 
     //const uiPricesText: string[] = await I.grabTextFromAll({ byTestId: 'inventory-item-price' });
     const uiPricesText: string[] = await I.grabTextFromAll('.inventory_item_price');
@@ -71,10 +71,10 @@ Scenario('verify price sorting high to low', async ({ I }) => {
 
 Scenario('verify name sorting (A to Z)', async ({ I }) => {
 
-    await I.amOnPage('/');
-    await I.login("standard_user", "secret_sauce");
+    I.amOnPage('/');
+    I.login("standard_user", "secret_sauce");
 
-    await I.selectOption({ byTestId: 'product-sort-container' }, 'Name (A to Z)');
+    I.selectOption({ byTestId: 'product-sort-container' }, 'Name (A to Z)');
 
     //const inventoryItemNames: string[] = await I.grabTextFromAll({ byTestId: 'inventory-item-name' });
     const inventoryItemNames: string[] = await I.grabTextFromAll('.inventory_item_name ');
@@ -95,10 +95,10 @@ Scenario('verify name sorting (A to Z)', async ({ I }) => {
 
 Scenario('verify name sorting (Z to A)', async ({ I }) => {
 
-    await I.amOnPage('/');
-    await I.login("standard_user", "secret_sauce");
+    I.amOnPage('/');
+    I.login("standard_user", "secret_sauce");
 
-    await I.selectOption({ byTestId: 'product-sort-container' }, 'Name (Z to A)');
+    I.selectOption({ byTestId: 'product-sort-container' }, 'Name (Z to A)');
 
     //const inventoryItemNames: string[] = await I.grabTextFromAll({ byTestId: 'inventory-item-name' });
     const inventoryItemNames: string[] = await I.grabTextFromAll('.inventory_item_name ');
