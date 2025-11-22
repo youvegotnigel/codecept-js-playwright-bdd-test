@@ -167,6 +167,9 @@ Scenario('verify app reset',  ({ I }) => {
     I.click({ byTestId: 'add-to-cart-sauce-labs-fleece-jacket' });
 
     I.see('3', { byTestId: 'shopping-cart-badge' });
+    I.seeElement({ byTestId: 'remove-sauce-labs-backpack' });
+    I.seeElement({ byTestId: 'remove-sauce-labs-bike-light' });
+    I.seeElement({ byTestId: 'remove-sauce-labs-fleece-jacket' });
 
     I.click('#react-burger-menu-btn');              // open menu
     I.click({ byTestId: 'reset-sidebar-link' });    // click reset app state
