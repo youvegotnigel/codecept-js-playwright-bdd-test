@@ -2,7 +2,7 @@ import assert from 'assert';
 
 Feature('product');
 
-Scenario('verify adding items to cart',  ({ I }) => {
+Scenario('verify add/remove items from cart',  ({ I }) => {
 
     I.amOnPage('/');
     I.login("standard_user", "secret_sauce");
@@ -10,6 +10,13 @@ Scenario('verify adding items to cart',  ({ I }) => {
     I.click({ byTestId: 'add-to-cart-sauce-labs-backpack' });
     I.click({ byTestId: 'add-to-cart-sauce-labs-bike-light' });
     I.click({ byTestId: 'add-to-cart-sauce-labs-fleece-jacket' });
+    I.click({ byTestId: 'add-to-cart-sauce-labs-onesie' });
+    I.click({ byTestId: 'add-to-cart-test.allthethings()-t-shirt-(red)' });
+
+    I.see('5', { byTestId: 'shopping-cart-badge' });
+
+    I.click({ byTestId: 'remove-sauce-labs-bike-light' });
+    I.click({ byTestId: 'remove-sauce-labs-fleece-jacket' });
 
     I.see('3', { byTestId: 'shopping-cart-badge' });
 
