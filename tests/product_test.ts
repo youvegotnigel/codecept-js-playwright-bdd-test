@@ -123,3 +123,39 @@ Scenario('verify name sorting (Z to A)', async ({ I }) => {
     );
 
 });
+
+
+Scenario('verify sauce labs backpack', async ({ I }) => {
+
+    I.amOnPage('/');
+    I.login("standard_user", "secret_sauce");
+    
+    //I.click({ byTestId: 'inventory-item-sauce-labs-backpack-img' });
+
+    const image_source = await I.grabAttributeFrom({ byTestId: 'inventory-item-sauce-labs-backpack-img' }, 'src');
+
+    assert.deepStrictEqual(
+        image_source,
+        '/static/media/sauce-backpack-1200x1500.0a0b85a385945026062b.jpg',
+        `Backpack image src does not include expected filename. Actual: "${image_source}"`,
+    );
+
+});
+
+
+Scenario('verify sauce labs backpack with problem user', async ({ I }) => {
+
+    I.amOnPage('/');
+    I.login("problem_user", "secret_sauce");
+    
+    //I.click({ byTestId: 'inventory-item-sauce-labs-backpack-img' });
+
+    const image_source = await I.grabAttributeFrom({ byTestId: 'inventory-item-sauce-labs-backpack-img' }, 'src');
+
+    assert.deepStrictEqual(
+        image_source,
+        '/static/media/sauce-backpack-1200x1500.0a0b85a385945026062b.jpg',
+        `Backpack image src does not include expected filename. Actual: "${image_source}"`,
+    );
+
+});
