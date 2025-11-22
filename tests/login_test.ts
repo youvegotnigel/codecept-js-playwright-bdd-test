@@ -44,3 +44,22 @@ Scenario('verify login with empty password',  ({ I }) => {
     I.see('Epic sadface: Password is required'); 
 
 });
+
+
+Scenario.only('verify logout',  ({ I }) => {
+
+    I.amOnPage('/');
+
+    I.fillField('[data-test="username"]', 'standard_user');
+    I.fillField('[data-test="password"]', 'secret_sauce');
+    I.click('[data-test="login-button"]');
+
+    I.see('Products'); 
+    
+    I.click('#react-burger-menu-btn');              // open menu
+    I.click('[data-test="logout-sidebar-link"]');   // click logout
+
+    I.see('Accepted usernames are:');
+    I.dontSee('Products'); 
+
+});
