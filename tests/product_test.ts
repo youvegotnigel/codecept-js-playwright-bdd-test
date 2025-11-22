@@ -16,38 +16,103 @@ Scenario('verify adding items to cart',  ({ I }) => {
 });
 
 
-Scenario.only('verify price sorting', async ({ I }) => {
+Scenario('verify price sorting low to high', async ({ I }) => {
 
-    await I.amOnPage('/');
-    await I.login("standard_user", "secret_sauce");
+    I.amOnPage('/');
+    I.login("standard_user", "secret_sauce");
 
-    await I.selectOption({ byTestId: 'product-sort-container' }, 'Price (low to high)');
-    await I.waitForElement({ byTestId: 'inventory-item-price' }, 5); // wait until prices are visible
+    I.selectOption({ byTestId: 'product-sort-container' }, 'Price (low to high)');
 
-    //const els = await page.locator('.inventory_item_price');
-    // const count = await els.count();
-
-    // const prices = [];
-
-    // for (let i = 0; i < count; i++) {
-    //     const text = await els.nth(i).innerText();
-    //     prices.push(text);
-    // }
-
-
-    const uiPricesText: string[] = await I.grabTextFromAll({ byTestId: 'inventory-item-price' });
+    //const uiPricesText: string[] = await I.grabTextFromAll({ byTestId: 'inventory-item-price' });
+    const uiPricesText: string[] = await I.grabTextFromAll('.inventory_item_price');
     const uiPrices = uiPricesText.map((t) => parseFloat(t.replace('$', '')));
 
     const sortedPrices = [...uiPrices].sort((a, b) => a - b);
 
-    console.log('UI Text Prices: ', uiPricesText);
-    console.log('UI Prices: ', uiPrices);
-    console.log('Sorted Prices: ', sortedPrices);
+    console.log('UI Text Prices:', uiPricesText);
+    console.log('UI Prices:', uiPrices);
+    console.log('Sorted Prices:', sortedPrices);
 
-    // assert.deepStrictEqual(
-    //     uiPrices,
-    //     sortedPrices,
-    //     'Items are not sorted by price low → high',
-    // );
+    assert.deepStrictEqual(
+        uiPrices,
+        sortedPrices,
+        'Items are not sorted by price low → high',
+    );
+
+});
+
+
+Scenario('verify price sorting high to low', async ({ I }) => {
+
+    I.amOnPage('/');
+    I.login("standard_user", "secret_sauce");
+
+    I.selectOption({ byTestId: 'product-sort-container' }, 'Price (high to low)');
+
+    //const uiPricesText: string[] = await I.grabTextFromAll({ byTestId: 'inventory-item-price' });
+    const uiPricesText: string[] = await I.grabTextFromAll('.inventory_item_price');
+    const uiPrices = uiPricesText.map((t) => parseFloat(t.replace('$', '')));
+
+    //create a DESCENDING sorted copy to compare against (high -> low)
+    const sortedPrices = [...uiPrices].sort((a, b) => b - a);
+
+    console.log('UI Text Prices:', uiPricesText);
+    console.log('UI Prices:', uiPrices);
+    console.log('Sorted Prices:', sortedPrices);
+
+    assert.deepStrictEqual(
+        uiPrices,
+        sortedPrices,
+        'Items are not sorted by price high → low',
+    );
+
+});
+
+
+Scenario('verify name sorting (A to Z)', async ({ I }) => {
+
+    I.amOnPage('/');
+    I.login("standard_user", "secret_sauce");
+
+    I.selectOption({ byTestId: 'product-sort-container' }, 'Name (A to Z)');
+
+    //const inventoryItemNames: string[] = await I.grabTextFromAll({ byTestId: 'inventory-item-name' });
+    const inventoryItemNames: string[] = await I.grabTextFromAll('.inventory_item_name ');
+
+    const sortedInventoryItemNames = [...inventoryItemNames].sort((a, b) => a.localeCompare(b));
+
+    console.log('Inventory Item Names:', inventoryItemNames);
+    console.log('Sorted Inventory Item Names:', sortedInventoryItemNames);
+
+    assert.deepStrictEqual(
+        inventoryItemNames,
+        sortedInventoryItemNames,
+        'Items are not sorted by name A → Z',
+    );
+
+});
+
+
+Scenario('verify name sorting (Z to A)', async ({ I }) => {
+
+    I.amOnPage('/');
+    I.login("standard_user", "secret_sauce");
+
+    I.selectOption({ byTestId: 'product-sort-container' }, 'Name (Z to A)');
+
+    //const inventoryItemNames: string[] = await I.grabTextFromAll({ byTestId: 'inventory-item-name' });
+    const inventoryItemNames: string[] = await I.grabTextFromAll('.inventory_item_name ');
+
+    //create a DESCENDING sorted copy to compare against (Z -> A)
+    const sortedInventoryItemNames = [...inventoryItemNames].sort((a, b) => b.localeCompare(a));
+
+    console.log('Inventory Item Names:', inventoryItemNames);
+    console.log('Sorted Inventory Item Names:', sortedInventoryItemNames);
+
+    assert.deepStrictEqual(
+        inventoryItemNames,
+        sortedInventoryItemNames,
+        'Items are not sorted by name Z → A',
+    );
 
 });
