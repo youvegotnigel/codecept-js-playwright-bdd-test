@@ -67,3 +67,52 @@ Scenario('verify price sorting high to low', async ({ I }) => {
     );
 
 });
+
+
+Scenario('verify name sorting (A to Z)', async ({ I }) => {
+
+    await I.amOnPage('/');
+    await I.login("standard_user", "secret_sauce");
+
+    await I.selectOption({ byTestId: 'product-sort-container' }, 'Name (A to Z)');
+
+    //const inventoryItemNames: string[] = await I.grabTextFromAll({ byTestId: 'inventory-item-name' });
+    const inventoryItemNames: string[] = await I.grabTextFromAll('.inventory_item_name ');
+
+    const sortedInventoryItemNames = [...inventoryItemNames].sort((a, b) => a.localeCompare(b));
+
+    console.log('Inventory Item Names:', inventoryItemNames);
+    console.log('Sorted Inventory Item Names:', sortedInventoryItemNames);
+
+    assert.deepStrictEqual(
+        inventoryItemNames,
+        sortedInventoryItemNames,
+        'Items are not sorted by name A → Z',
+    );
+
+});
+
+
+Scenario('verify name sorting (Z to A)', async ({ I }) => {
+
+    await I.amOnPage('/');
+    await I.login("standard_user", "secret_sauce");
+
+    await I.selectOption({ byTestId: 'product-sort-container' }, 'Name (Z to A)');
+
+    //const inventoryItemNames: string[] = await I.grabTextFromAll({ byTestId: 'inventory-item-name' });
+    const inventoryItemNames: string[] = await I.grabTextFromAll('.inventory_item_name ');
+
+    //create a DESCENDING sorted copy to compare against (Z -> A)
+    const sortedInventoryItemNames = [...inventoryItemNames].sort((a, b) => b.localeCompare(a));
+
+    console.log('Inventory Item Names:', inventoryItemNames);
+    console.log('Sorted Inventory Item Names:', sortedInventoryItemNames);
+
+    assert.deepStrictEqual(
+        inventoryItemNames,
+        sortedInventoryItemNames,
+        'Items are not sorted by name Z → A',
+    );
+
+});
