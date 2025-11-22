@@ -1,6 +1,6 @@
 Feature('cart');
 
-Scenario('verify add/remove items from cart',  ({ I }) => {
+Scenario('verify add to cart functionality',  ({ I }) => {
 
     I.amOnPage('/');
     I.login("standard_user", "secret_sauce");
