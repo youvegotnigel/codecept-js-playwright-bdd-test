@@ -2,10 +2,12 @@ import assert from 'assert';
 
 Feature('product');
 
+// NOTE: There is no description provided for Before/After hooks
 Before(({ I }) => {
     I.amOnPage('/');
     I.login("standard_user", "secret_sauce");
 });
+
 
 Scenario('verify add/remove items from cart',  ({ I }) => {
 
