@@ -1,3 +1,5 @@
+import assert from 'assert';
+
 Feature('cart');
 
 Scenario('verify add to cart functionality',  ({ I }) => {
@@ -22,5 +24,21 @@ Scenario('verify add to cart functionality',  ({ I }) => {
     I.seeTextEquals('Test.allTheThings() T-Shirt (Red)', { byTestId: 'item-3-title-link' });
     I.seeTextEquals('Sauce Labs Backpack', { byTestId: 'item-4-title-link' });
     I.seeTextEquals('Sauce Labs Fleece Jacket', { byTestId: 'item-5-title-link' });
+
+});
+
+
+Scenario('verify sauce labs backpack with problem user', async ({ I }) => {
+
+    I.amOnPage('/');
+    I.login("problem_user", "secret_sauce");
+
+    const image_source = await I.grabAttributeFrom({ byTestId: 'inventory-item-sauce-labs-backpack-img' }, 'src');
+
+    assert.deepStrictEqual(
+        image_source,
+        '/static/media/sauce-backpack-1200x1500.0a0b85a385945026062b.jpg',
+        `Backpack image src does not include expected filename. Actual: "${image_source}"`,
+    );
 
 });
