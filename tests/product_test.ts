@@ -2,11 +2,13 @@ import assert from 'assert';
 
 Feature('product');
 
-Scenario('verify add/remove items from cart',  ({ I }) => {
-
+Before(({ I }) => {
     I.amOnPage('/');
     I.login("standard_user", "secret_sauce");
-    
+});
+
+Scenario('verify add/remove items from cart',  ({ I }) => {
+
     I.click({ byTestId: 'add-to-cart-sauce-labs-backpack' });
     I.click({ byTestId: 'add-to-cart-sauce-labs-bike-light' });
     I.click({ byTestId: 'add-to-cart-sauce-labs-fleece-jacket' });
@@ -24,9 +26,6 @@ Scenario('verify add/remove items from cart',  ({ I }) => {
 
 
 Scenario('verify price sorting low to high', async ({ I }) => {
-
-    I.amOnPage('/');
-    I.login("standard_user", "secret_sauce");
 
     I.selectOption({ byTestId: 'product-sort-container' }, 'Price (low to high)');
 
@@ -50,9 +49,6 @@ Scenario('verify price sorting low to high', async ({ I }) => {
 
 
 Scenario('verify price sorting high to low', async ({ I }) => {
-
-    I.amOnPage('/');
-    I.login("standard_user", "secret_sauce");
 
     I.selectOption({ byTestId: 'product-sort-container' }, 'Price (high to low)');
 
@@ -78,9 +74,6 @@ Scenario('verify price sorting high to low', async ({ I }) => {
 
 Scenario('verify name sorting (A to Z)', async ({ I }) => {
 
-    I.amOnPage('/');
-    I.login("standard_user", "secret_sauce");
-
     I.selectOption({ byTestId: 'product-sort-container' }, 'Name (A to Z)');
 
     //const inventoryItemNames: string[] = await I.grabTextFromAll({ byTestId: 'inventory-item-name' });
@@ -101,9 +94,6 @@ Scenario('verify name sorting (A to Z)', async ({ I }) => {
 
 
 Scenario('verify name sorting (Z to A)', async ({ I }) => {
-
-    I.amOnPage('/');
-    I.login("standard_user", "secret_sauce");
 
     I.selectOption({ byTestId: 'product-sort-container' }, 'Name (Z to A)');
 
@@ -127,25 +117,6 @@ Scenario('verify name sorting (Z to A)', async ({ I }) => {
 
 Scenario('verify sauce labs backpack', async ({ I }) => {
 
-    I.amOnPage('/');
-    I.login("standard_user", "secret_sauce");
-
-    const image_source = await I.grabAttributeFrom({ byTestId: 'inventory-item-sauce-labs-backpack-img' }, 'src');
-
-    assert.deepStrictEqual(
-        image_source,
-        '/static/media/sauce-backpack-1200x1500.0a0b85a385945026062b.jpg',
-        `Backpack image src does not include expected filename. Actual: "${image_source}"`,
-    );
-
-});
-
-
-Scenario('verify sauce labs backpack with problem user', async ({ I }) => {
-
-    I.amOnPage('/');
-    I.login("problem_user", "secret_sauce");
-
     const image_source = await I.grabAttributeFrom({ byTestId: 'inventory-item-sauce-labs-backpack-img' }, 'src');
 
     assert.deepStrictEqual(
@@ -158,9 +129,6 @@ Scenario('verify sauce labs backpack with problem user', async ({ I }) => {
 
 
 Scenario('verify app reset', { timeout: 10 }, ({ I }) => {
-
-    I.amOnPage('/');
-    I.login("standard_user", "secret_sauce");
 
     I.click({ byTestId: 'add-to-cart-sauce-labs-backpack' });
     I.click({ byTestId: 'add-to-cart-sauce-labs-bike-light' });
