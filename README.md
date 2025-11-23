@@ -74,6 +74,9 @@ or
 npx codeceptjs run --steps
 
 or
+npx codeceptjs run tests/hook_test.ts --steps
+
+or
 npx codeceptjs run --steps --verbose
 
 or
