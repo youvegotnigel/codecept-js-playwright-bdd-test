@@ -41,7 +41,7 @@ codecept-js-playwright-bdd-test/
 ├── steps_file.ts
 ├── tsconfig.json
 ├── package.json
-└── .github/workflows/ci.yml
+└── .github/workflows/codecept-js-playwright.yml
 
 ```
 ---
