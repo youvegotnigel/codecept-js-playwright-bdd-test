@@ -1,5 +1,7 @@
 # CodeceptJS + Playwright + BDD (Gherkin) Test Automation Framework
 
+[![Build](https://github.com/youvegotnigel/codecept-js-playwright-bdd-test/actions/workflows/codecept-js-playwright.yml/badge.svg)](https://github.com/youvegotnigel/codecept-js-playwright-bdd-test/actions/workflows/codecept-js-playwright.yml) 
+
 This repository contains an end-to-end UI test automation framework using:
 
 - **CodeceptJS** as the test runner  
