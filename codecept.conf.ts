@@ -70,7 +70,7 @@ export const config: CodeceptJS.MainConfig = {
   hooks: [],
   gherkin: {
     features: './features/*.feature',
-    steps: ['./step_definitions/*.steps.ts']
+    steps: './step_definitions/*.steps.ts'
   },
 
   // https://github.com/codeceptjs/CodeceptJS/tree/3.x/lib/plugin
