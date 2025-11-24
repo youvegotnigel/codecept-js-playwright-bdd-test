@@ -36,11 +36,20 @@ export const config: CodeceptJS.MainConfig = {
   include: {
     I: './steps_file.ts'
   },
+
+  // https://github.com/codeceptjs/CodeceptJS/tree/3.x/lib/plugin
   plugins: {
 
     customListener: {
       enabled: true,
       require: "./listeners/customListener.ts"
+    },
+
+    screenshotOnFail: {
+      enabled: true,                    // Enable or disable the screenshot on failure
+      fullPageScreenshots: true,        // Capture the full page in the screenshot
+      uniqueScreenshotNames: false,     // Generate unique names for each screenshot
+      disableScreenshots: false         // Disable screenshots if needed
     },
 
     allure: {
