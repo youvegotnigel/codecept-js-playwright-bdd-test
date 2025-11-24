@@ -36,7 +36,7 @@ codecept-js-playwright-bdd-test/
 │     └── login.steps.ts
 │
 ├── pages/                      # <---- TODO
-│     └── LoginPage.ts
+│     └── login.page.ts
 │
 ├── codecept.conf.ts
 ├── steps.d.ts
