@@ -11,6 +11,8 @@ setWindowSize(1536, 722);
 setCommonPlugins();
 
 export const config: CodeceptJS.MainConfig = {
+  require: ['ts-node/register'],
+
   tests: 'tests/*_test.ts',
   output: './output',
   helpers: {
@@ -37,12 +39,46 @@ export const config: CodeceptJS.MainConfig = {
     I: './steps_file.ts'
   },
 
+  mocha: {
+    reporterOptions: {
+      'codeceptjs-cli-reporter': {
+        stdout: '-',
+        options: {
+          verbose: true,
+          steps: true
+        }
+      },
+      mochawesome: {
+        stdout: './output/console.log',
+        options: {
+          reportDir: './output',
+          reportFilename: 'report'
+        }
+      },
+      'mocha-junit-reporter': {
+        stdout: './output/console.log',
+        options: {
+          mochaFile: './output/result.xml',
+          attachments: true
+        }
+      }
+    }
+  },
+  bootstrap: null,
+  timeout: null,
+  teardown: null,
+  hooks: [],
+  gherkin: {
+    features: './features/*.feature',
+    steps: ['./step_definitions/*_steps.ts']
+  },
+
   // https://github.com/codeceptjs/CodeceptJS/tree/3.x/lib/plugin
   plugins: {
 
     customListener: {
       enabled: true,
-      require: "./listeners/customListener.ts"
+      require: './listeners/customListener.ts'
     },
 
     screenshotOnFail: {
@@ -54,7 +90,7 @@ export const config: CodeceptJS.MainConfig = {
 
     allure: {
       enabled: true,
-      require: "allure-codeceptjs",
+      require: 'allure-codeceptjs'
     },
 
     htmlReporter: {
@@ -64,33 +100,27 @@ export const config: CodeceptJS.MainConfig = {
       includeArtifacts: true,          // Include screenshots/artifacts
       showSteps: true,                 // Show individual test steps
       showSkipped: true                // Show skipped tests
-    }
-  },
+    },
 
-  "mocha": {
-    "reporterOptions": {
-      "codeceptjs-cli-reporter": {
-        "stdout": "-",
-        "options": {
-          "verbose": true,
-          "steps": true,
-        }
-      },
-      "mochawesome": {
-        "stdout": "./output/console.log",
-        "options": {
-          "reportDir": "./output",
-          "reportFilename": "report"
-        }
-      },
-      "mocha-junit-reporter": {
-        "stdout": "./output/console.log",
-        "options": {
-          "mochaFile": "./output/result.xml",
-          "attachments": true                   //add screenshot for a failed test
-        }
-      }
-    }
+    retryFailedStep: {
+      enabled: true
+    },
+
+    eachElement: {
+      enabled: true
+    },
+
+    pauseOnFail: {}
   },
+  stepTimeout: 0,
+  stepTimeoutOverride: [{
+      pattern: 'wait.*',
+      timeout: 0
+    },
+    {
+      pattern: 'amOnPage',
+      timeout: 0
+    }
+  ],
   name: 'codecept-js-playwright-bdd-test'
 }
