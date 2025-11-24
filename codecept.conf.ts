@@ -36,7 +36,7 @@ export const config: CodeceptJS.MainConfig = {
   include: {
     I: './steps_file.ts'
   },
-  
+
   // https://github.com/codeceptjs/CodeceptJS/tree/3.x/lib/plugin
   plugins: {
 
@@ -47,7 +47,6 @@ export const config: CodeceptJS.MainConfig = {
 
     screenshotOnFail: {
       enabled: true,                    // Enable or disable the screenshot on failure
-      path: './output/screenshots',     // Directory to save screenshots
       fullPageScreenshots: true,        // Capture the full page in the screenshot
       uniqueScreenshotNames: false,     // Generate unique names for each screenshot
       disableScreenshots: false         // Disable screenshots if needed
