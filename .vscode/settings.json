@@ -1,0 +1,10 @@
+{
+  "cucumberautocomplete.steps": [
+    "step_definitions/**/*.ts",
+    "steps/**/*.ts"
+  ],
+  "cucumberautocomplete.syncfeatures": "features/**/*.feature",
+  "cucumberautocomplete.strictGherkinCompletion": true,
+  "cucumberautocomplete.smartSnippets": true,
+  "cucumberautocomplete.stepRegex": "((Given|When|Then)\\s.*)"
+}
