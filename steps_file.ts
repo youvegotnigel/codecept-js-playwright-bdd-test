@@ -11,7 +11,7 @@ export = function() {
     login(username: string, password: string) {
 
       I.fillField({ byTestId: 'username' }, username);
-      I.fillField({ byTestId: 'password' }, password);
+      I.fillField({ byTestId: 'password' }, secret(password));
       I.click({ byTestId: 'login-button' });
 
       I.see('Products'); 
