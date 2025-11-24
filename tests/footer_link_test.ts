@@ -12,6 +12,7 @@ Scenario('verify twitter footer links',  ({ I }) => {
 
 });
 
+
 Scenario('verify facebook footer links',  ({ I }) => {
 
     I.amOnPage('/');
